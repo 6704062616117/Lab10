@@ -1,0 +1,31 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+struct Books{
+    int BookID;
+    char BookTitle[50];
+} ComputerBook;
+
+void DisplayData(struct Books *CBook);
+
+int main() {
+
+    printf("Enter Book ID :");
+    scanf("%d",&ComputerBook.BookID);
+
+    printf("Enter Book Title :");
+    scanf("%s",ComputerBook.BookTitle);
+
+    DisplayData(&ComputerBook); // ส่งตำแหน่งที่อยู่ข้อมูลไปยังฟังก์ชัน DisplayData
+
+    return 0;
+}
+
+void DisplayData(struct Books *CBook){
+    printf("Book ID : %d \n",(*CBook).BookID);
+    printf("Book Title : %s \n",CBook->BookTitle);
+}
+
+//ทดสอบรันโปรแกรมและเขียนผลลัพท์พร้อมอธิบายโปรแกรม
+//(*CBook).BookID คือ การเข้าถึงสมาชิก BookID ของโครงสร้าง Books ผ่านตัวชี้ (pointer) CBook โดยใช้การ dereference (*) ก่อน แล้วจึงเข้าถึงสมาชิกด้วย .
+//CBook->BookTitle คือ การเข้าถึงสมาชิก BookTitle ของโครงสร้าง Books ผ่าน pointer CBook โดยใช้เครื่องหมาย -> ซึ่งเป็นรูปแบบย่อของ (*CBook).BookTitle และใช้กับ pointer ของ struct โดยตรง
